@@ -1,7 +1,7 @@
 ---
-title: "Loan Default Prediction"
+title: "DS 705 Final Project"
 author: "Jim Ryan"
-date: "03/01/2025"
+date: "03/01/2020"
 output:
   pdf_document: default
   word_document: default
@@ -9,6 +9,16 @@ fontsize: 12pt
 ---
 
 ```{r message=F,warning=F,include=FALSE}
+options(repos = c(CRAN = "https://packagemanager.posit.co/cran/2024-04-01"))
+
+deps <- tools::package_dependencies("caret", recursive = TRUE)[[1]]
+missing <- setdiff(deps, rownames(installed.packages()))
+missing
+install.packages(missing)
+
+library(caret)
+
+library(caret)
 library(data.table)
 library(ggplot2)
 library(sqldf)
@@ -434,7 +444,7 @@ p2
 
 ```
 Part 7 - Optimizing the Threshold for Profit
-In this section I will take the predictions at the different threshold levels from Part 6 and apply them to my test data. Then I will sum the profit for each threshold and determine what the maximum  profit increase is for the loans I predicted as good. I add the probabilities calculations from section 5 and the test data I created in section 5. Then I sum the total paid minus the amount for my total profit. According to the model, the lowest thresahold  of .3 is where the biggest profit is - 1,418,710. For there the profit for the .45 threshold is  $1,374,321. The default threhold profit (.5) is $1,386,706. The profiut for .55 is  $1,354,828. The profit keeps decreasing from there. AT .65 the profit is $98,274.20 then for .75 threshold the profit is $966,017.50. The total profit for all the loans in the training set is 1,418,710. The profit for a 'perfect' model that denies all of the truly bad loans is $750,778.40.
+I tnis section I willtake the predictions at the different threshold levels from Part 6 and apply them to my test data. Then I will sum the profit for each threshold and determine what the maximum  profit increase is for the loans I predicted as good. I add the probabilities calculations from section 5 and the test data I created in section 5. Then I sum the total paid minus the amount for my total profit. According to the model, the lowest thresahold  of .3 is where the biggest profit is - 1,418,710. For there the profit for the .45 threshold is  1,374,321. The default threhold profit (.5) is 1,386,706. The profiut for .55 is  1,354,828. The profit keeps decreasing from there. AT .65 the profit is 98,274.20 then for .75 threshold the profit is 966,017.50. The total profit for all the loans in the training set is 1,418,710. The profit for a 'perfect' model that denies all of the truly bad loans is 750778.40.
 
 ```{r}
 
