@@ -1,7 +1,7 @@
 ---
-title: "DS 705 Final Project"
+title: "Loan Default Prediction"
 author: "Jim Ryan"
-date: "03/01/2020"
+date: "03/01/2025"
 output:
   pdf_document: default
   word_document: default
