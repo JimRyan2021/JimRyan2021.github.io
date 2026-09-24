@@ -1,12 +1,9 @@
 ---
 title: "Loan Default Prediction"
 author: "Jim Ryan"
-date: "03/01/2024"
-output:
-  html_document:
-    df_print: paged
-  word_document: default
-  pdf_document: default
+date: "Originally completed March 2024; updated 2026"
+output: html_document
+ 
 fontsize: 12pt
 ---
 
@@ -182,11 +179,11 @@ grid.arrange(p5,p6)
 
 ```
 I plotted a histogram of all the variables in the LoansDT dataframe to get an overall sense of of the data is normally distributed or not.Due to space limitations, I did not include this plot. Much of  the data looks right skewed.
-```{r message=F,include=FALSE}
+```{r message=F}
 plot_histogram(LoansDT)
 ```
 I plotted the states against status for both the good and bad loans but noticed any relationship. As expected the more populous states (New York and California) had the higher number of loans both good and bad. I will be dropping this variable.   I am also going to drop the employment field as there are so many different values in there it will slow my regression down as there are over 15,000 distinct values, which is too many for the variable to be significant.
-```{r message=F,include=FALSE}
+```{r message=F}
 
 p <- ggplot(loans_bad, aes(status2, fill = state)) + facet_wrap(~state)
 p + geom_bar()
