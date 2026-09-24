@@ -1,24 +1,19 @@
 ---
-title: "DS 705 Final Project"
+title: "Loan Default Prediction"
 author: "Jim Ryan"
-date: "03/01/2020"
+date: "03/01/2024"
 output:
-  pdf_document: default
+  html_document:
+    df_print: paged
   word_document: default
+  pdf_document: default
 fontsize: 12pt
 ---
 
 ```{r message=F,warning=F,include=FALSE}
-options(repos = c(CRAN = "https://packagemanager.posit.co/cran/2024-04-01"))
 
-deps <- tools::package_dependencies("caret", recursive = TRUE)[[1]]
-missing <- setdiff(deps, rownames(installed.packages()))
-missing
-install.packages(missing)
 
-library(caret)
 
-library(caret)
 library(data.table)
 library(ggplot2)
 library(sqldf)
@@ -31,7 +26,7 @@ install.packages("remotes",repos="https://github.com/njtierney/naniar")
 library(ResourceSelection)
 library(gridExtra)
 ```
-Part 2: Introduction 
+Part 1: Introduction 
 
 For this project I will use logistic regression to predict which applicants are likely to default on their loans. I am going to use the loans50k data set that was given to us as part of this assignment.  This data set contains 50,000 loans in various statuses and various amounts. There are 32 available variables in the data set.  My response variable will be the status variable. I will start by preparing and cleaning the data. 
 
@@ -40,7 +35,7 @@ For this project I will use logistic regression to predict which applicants are 
 LoansDT <- fread("Loans50k.csv")
 
 ```
-Part 3: Preparing and Cleaning the Data
+Part 2: Preparing and Cleaning the Data
 
 The data contains different variables collected as either part of the application process or information from when the loan was disbursed. I am trying to predict which variable or variables will allow me to predict whether a loan becomes default or not. I removed all loans that did not have a status of ‘Fully Paid’, ‘Default’ or ‘Charged Off’. Then I copied the response variable – status – into another field called status2. I then updated the status of loans that were Fully Paid to ‘Good’ and the ones that were ‘Default’ or ‘Charged Off’ to ‘Bad’.  
 
