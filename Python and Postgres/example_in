@@ -1,9 +1,0 @@
-friends = ["Rolf","Bob","Jen"]
-print("Jen" in friends)
-movies_watched = {"the Matrix", "Green Book","Her"}
-user_movie = input("Enter something you have watched recently: ")
-if user_movie in movies_watched:
-    print(f"I've watched {user_movie} too!")
-else:
-    print(f"I haven't watched that yet!")
-                  
